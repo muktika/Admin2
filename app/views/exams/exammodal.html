@@ -1,0 +1,240 @@
+<div class="modal-header">
+    <div class="modal-title" id="myModalLabel"><span style="font-size: 22px;">Add/Edit Exam Details</span>
+    <a class="btn btn-default pull-right" ng-click="cancel()">Close</a></div>
+</div>
+
+ <div class="modal-body">
+    <div class="tabbable"> <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-target="#tab1" data-toggle="tab">Exam</a></li>
+            <li><a data-target="#tab2" data-toggle="tab">Exam Info</a></li>
+            <li><a data-target="#tab3" data-toggle="tab">Selection Procedure</a></li>
+            <li><a data-target="#tab4" data-toggle="tab">Map Courses</a></li>
+            <li><a data-target="#tab5" data-toggle="tab">Order Courses</a></li>
+            <li><a data-target="#tab6" data-toggle="tab">Map Exam Category</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <br/><br/>
+                <label>Title<span class="mandatory">*</span>:</label>
+                <input size="40" type="text" ng-model="exam.title"><br/><br/>
+                <label>Description<span class="mandatory">*</span>:</label>
+                <input size="40" type="text" ng-model="exam.description"></input><br/><br/>
+                <label>Url<span ng-if="exam.haspage==true" class="mandatory">*</span>:</label>
+                <input size="40" type="text" ng-model="exam.url"></input><br/><br/>
+                <label>Type<span class="mandatory">*</span>:</label>
+                <select style="width: 362px; margin-bottom:20px;" ng-model="exam.type">
+                    <option value="REGULAR">REGULAR</option>
+                    <option value="POPULAR">POPULAR</option>
+                    <option value="UPCOMING">UPCOMING</option>
+                </select><br/><br/>
+                <label>Image:</label>
+                <input size="40" type="text" ng-model="exam.image"></input><br/><br/>
+                <label>Has Page<span class="mandatory">*</span><a class="tooltips"><span>Enable/Disable Exam Page Visibility on Website</span><i class="fa fa-info-circle"></i></a>:</label>
+                <input type="checkbox" ng-model="exam.haspage" value="{{exam.haspage}}">&nbsp;
+                <span class="mandatory">[Note: Checked- true, Unchecked- false]</span>
+                <br/><br/>
+                <label>Has Courses<span class="mandatory">*</span><a class="tooltips"><span>Specifies whether courses are mapped to this exam or not.</span><i class="fa fa-info-circle"></i></a>:</label>
+                <input type="checkbox" ng-model="exam.hascourses" value="{{exam.hascourses}}">
+                <br/><br/>
+                
+                <span class="leftmodal"><a class="btn btn-primary marginB" ng-click="create()">Save</a></span>
+            </div>
+            <div class="tab-pane" id="tab2">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <br/><br/>
+                        <label>Exam ID:</label>
+                        <input style="cursor: not-allowed;" size="40" type="text" value="{{exam.id}}" readonly="true"><br/><br/>
+                        <label>Page Title:</label>
+                        <input size="40" type="text" ng-model="infojson.page_title"></input><br/><br/>
+
+                        <label>Page Url:</label>
+                        <input size="40" type="text" ng-model="infojson.page_url"></input><br/><br/>
+
+                        <label>Exam Title: </label>
+                        <input size="40" type="text" ng-model="infojson.exam_title"></input><br/><br/>
+
+                        <label>Section Title: </label>
+                        <input size="40" type="text" ng-model="infojson.section_title"></input><br/><br/>
+
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <br/><br/>
+                        <label>Date: </label>
+                        <input size="40" type="text" ng-model="infojson.dateofexam"></input><br/><br/>
+
+                        <label>Vacancies: </label>
+                        <input size="40" type="text" ng-model="infojson.vacancies"></input><br/><br/>
+
+                        <label>Status: </label>
+                        <input size="40" type="text" ng-model="infojson.status"></input><br/><br/>
+
+                        <label>Name of the Post: </label>
+                        <input size="40" type="text" ng-model="infojson.name_of_post"></input><br/><br/>
+
+                        <label>Mode: </label>
+                        <input size="40" type="text" ng-model="infojson.mode"></input><br/>
+                    </div>
+                </div>
+                <span class="leftmodal"><a class="btn btn-primary marginB" ng-click="ok()">Save</a></span>
+            </div>
+            <div class="tab-pane" id="tab3">
+                <span style="color:red; text-align: center;"><p>Note: Any HTML tag can be used. Please do not use " (quotes) for anything. For links use '(single quote). Example: a href = 'www.mockbank.com'.</p></span>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <br/>
+                        <div ng-repeat="phase in selection track by $index">
+                            <label>Phase {{$index+1}} Title: </label>
+                            <input size="40" type="text" ng-model="phase.title"></input>
+                            <p/>
+                            <label>Phase {{$index+1}} Dates:</label>
+                            <input size="40" type="text" ng-model="phase.dates"></input>
+                            <p/>
+                            <label>Phase {{$index+1}} Pattern: </label>
+                            <input size="40" type="text" ng-model="phase.pattern"></input>
+                        <br/><br/>
+                        </div>
+                        
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <br/>
+                        <label class="customWidth">Eligibility Criteria: </label>
+                        <input size="40" type="text" name="eligibilityCriteria" ng-model="infojson.eligibility_criteria"></input>
+                        <p/>
+                        <label class="customWidth" for="syllabus">Syllabus: </label>
+                        <input size="40" type="text" name="syllabus" ng-model="infojson.syllabus"></input>
+                        <p/>
+                        <label class="customWidth" for="note">Note: </label>
+                        <input size="40" type="text" name="note" ng-model="infojson.note"></input>
+                        <p/>
+                        <label class="customWidth" for="salary">Salary: </label>
+                        <input size="40" type="text" name="salary" ng-model="infojson.salary"></input>
+                        <p/>
+                        <label class="customWidth" for="previous_year_cuttoff">Previous Year Cutoff: </label>
+                        <input size="40" type="text" name="previous_year_cuttoff" ng-model="infojson.previous_year_cutoff"></input>
+                        <!--"eligibilty_criteria": ["Age: 20 - 28 Years Education: A Degree(Graduation) in any discipline from a University recognised by the Govt.Of India or any equivalent qualification recognized as such by the Central Government."],-->
+                        <p/>
+                        <label class="customWidth" for="previous_year_papers">Previous Year Paper <a class="tooltips"><i class="fa fa-info-circle"></i><span>Enter Url link</span></a></label>
+                        <input size="40" type="text" name="previous_year_papers" ng-model="infojson.previous_year_papers"></input>
+                        <p/>
+                        <label class="customWidth" for="description">Description: </label>
+                        <input size="40" type="text" name="description" ng-model="infojson.description"></input>
+                        <p/>
+                        <label class="customWidth">Notification URL <a class="tooltips"><i class="fa fa-info-circle"></i><span>Enter Url link</span></a> </label>
+                        <input size="40" type="text" name="notification_link" ng-model="infojson.notification_link"></input>
+                        <br>
+                    </div>
+                </div>
+                <span class="leftmodal"><a class="btn btn-primary marginB" ng-click="ok()">Save</a></span>
+            </div>
+            <div class="tab-pane" id="tab4">
+                <br/><br/> 
+                <div class="container-fluid">
+                <label style="width:60px;">Course<span class="mandatory">*</span>: </label>
+                <input size="40" type="text" id="search-tag" ng-change="complete()" ng-model="courseTitle" autocomplete="off"/>&nbsp;&nbsp;
+                <label style="width:155px;">Course group name<span class="mandatory">*</span>: </label>
+                <input size="30" type="text" ng-model="examGname"></input><br/><br/>
+                <label style="width:85px;">Free Text<span class="mandatory">*</span>: </label><textarea cols="80" type="text" ng-model="freeText" style="height: 80px; margin-bottom: -10px"></textarea>&nbsp;
+                <a class="btn btn-primary btn-sm" ng-click="map()">Add</a><br/><br/><br/>
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Course ID</th>
+                        <th>Title</th>
+                        <th>Order</th>
+                        <th>Group Name</th>
+                        <th>Course on sale <a title="Enable/Disable Course for Exam Page"><i class="fa fa-info-circle"></i></a></th>
+                        <th>Display Name</th>
+                        <th>Free Text</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="course in examCourses">
+                        <td>{{course.id}}</td>
+                        <td>{{course.courses.id}}</td>
+                        <td>{{course.courses.title}}</td>
+                        <td>{{course.order}}</td>
+                        <td ng-if="editVal==0">{{course.groupName}}</td>
+                        <td ng-if="editVal==1"><input type="text" ng-model="course.groupName" style="width: 100%"></input></td>
+                        <td ng-if="editVal==0">{{course.courseOnSale}}</td>
+                        <td ng-if="editVal==1">
+                           <input type="checkbox" ng-model="course.courseOnSale" value="{{course.courseOnSale}}">
+                        </td>
+                        <td ng-if="editVal==0">{{course.displayName}}</td>
+                        <td ng-if="editVal==1">
+                           <input type="text" ng-model="course.displayName" style="width: 100%"></input>
+                        </td>
+                        <td ng-if="editVal==0">{{course.freeText}}</td>
+                        <td ng-if="editVal==1">
+                           <input type="text" ng-model="course.freeText" style="width: 100%"></input>
+                        </td>
+                        <td ng-if="editVal==0"><a class="tooltips" ng-click="edit()"><span>Edit</span><i class="fa fa-pencil-square-o"></i></a></td>
+                        <td ng-if="editVal==1"><a class="tooltips" ng-click="save(course)"><span>Save</span><i class="fa fa-floppy-o"></i></a></td>
+                        <td>
+                            <a class="tooltips" ng-click="delmap(course)"><span>Remove this mapping</span><i class="fa fa-remove"></i></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab5">
+                <br/><br/>
+                <a class="btn btn-primary mbYellow" ng-click="showOrderList()">Show Order List</a><br/><br/>
+                <div ng-if="showOrder==1">
+                    <div ng-repeat="gr in groupN track by $index">
+                        <label class="customWidth">{{gr}}<span class="mandatory">*</span>:</label>
+                        <input size="40" type="text" ng-model="groupO[$index]"></input>
+                    </div>
+                    <span class="leftmodal"><a class="btn btn-primary marginB" ng-click="saveOrder(orderId)">Save</a></span>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab6">
+                <br/><br/> 
+                <div class="container-fluid">
+                    <label>Exam Category<span class="mandatory">*</span>:</label>
+                    <select ng-if="addNewC==0" style="width: 362px; margin-bottom:20px;" ng-model="Ecategory.id">
+                        <option ng-repeat="c in categories" value="{{c.id}}">{{c.name}}</option>
+                    </select>
+                    <span ng-if="addNewC==1">
+                    <input size="40" type="text" ng-model="Ecategory.name"></input>
+                    <a class="btn btn-primary" ng-click="addNewCategory()">Save Category</a>
+                    </span>
+                    <a class="btn btn-primary" ng-if="addNewC==0" ng-click="addNew()">Add New Category</a>
+                    <a class="btn btn-primary" ng-click="updateExamCategory()">Map Category</a>
+                    <br/><br/>
+                    <div class="table-responsive">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Id</th>
+                            <th>Category Id</th>
+                            <th>Category Title</th>
+                            <th>Remove</th>
+                          </tr>
+                        </thead>
+                        <tbody >
+                          <tr ng-repeat="ecl in ExamCategoryList">
+                            <td>{{ecl.id}}</td>
+                            <td>{{ecl.category.id}}</td>
+                            <td>{{ecl.category.name}}</td>
+                            <td>
+                            <a class="tooltips" ng-click="deleteCategory(ecl.id)"><span>Remove this mapping</span><i class="fa fa-remove"></i></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        

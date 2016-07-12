@@ -1,0 +1,213 @@
+<div class="container-fluid page">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h1 class="page-header">Users</h1>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 marginB">
+          <h4>Search By:</h4>
+          Email: <input type="text" size="30" ng-model="email"></input>
+          Phone: <input type="text" size="30" ng-model="phone"></input>
+          <a class="btn btn-sm btn-primary mbBtn" ng-click="search()">Go</a>
+        </div>
+        <div ng-hide="show==1">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 marginB">
+            <h4>Change User's Password</h4>
+            Email: <input type="text" size="30" ng-model="changeEmail"></input>
+            <a class="btn btn-sm btn-primary mbBtn" ng-click="changeP()">Change</a>
+          </div>
+        </div>
+        <div ng-if="show==1">
+            <div class="well" ng-repeat="result in results track by $index">
+                <label style="width:100px;">ID:</label> {{result.id}}<br/>
+                <label style="width:100px;">Email:</label> {{result.email}}<br/>
+                <label style="width:100px;">Mobile:</label> {{result.mobile}}<br/>
+                <a ng-click="showUser(result)" class="btn btn-primary mbBtn btn-sm pull-right">View Information</a><br/>
+            </div>
+        </div>
+        <div id="w" ng-if="showProfile==1">
+            <div id="content" class="clearfix">
+             <a ng-click="back()" class="btn btn-primary mbYellow btn-sm">Go Back to List</a>
+              <div id="userphoto"><img src="./images/avatar.png" alt="default avatar"></div>
+              <h3>&nbsp;<span style="text-transform: uppercase;">{{userP.name}}</span></h3>
+              <nav id="profiletabs">
+                <ul class="clearfix nav nav-tabs">
+                  <li class="active"><a data-target="#bio" data-toggle="tab" class="sel btn btn-default mb-yellow">Bio</a></li>
+                  <li><a data-target="#about" data-toggle="tab" class="btn btn-default mb-yellow">About</a></li>
+                  <li><a data-target="#course" data-toggle="tab" class="btn btn-default mb-yellow">Courses</a></li>
+                  <li><a data-target="#benefit" data-toggle="tab" class="btn btn-default mb-yellow">Benefits</a></li>
+                  <li><a data-target="#test" data-toggle="tab" class="btn btn-default mb-yellow">Tests</a></li>
+                  <li><a data-target="#attempts" data-toggle="tab" class="btn btn-default mb-yellow">Attempts</a></li>
+                  <li><a data-target="#mentorship" data-toggle="tab" class="btn btn-default mb-yellow">Mentorship</a></li>
+                  <li><a data-target="#activity" data-toggle="tab" class="btn btn-default mb-yellow">Activity</a></li>
+                </ul>
+              </nav>
+              <br/>
+              <hr/>
+              <div class="tab-content">
+                <div class="tab-pane active" id="bio">
+                    <p>
+                      <label style="width:100px;">ID:</label> {{userP.id}}<br/>
+                      <label style="width:100px;">Email:</label> {{userP.email}}<br/>
+                      <label style="width:100px;">Mobile:</label> {{userP.mobile}}<br/>
+                      <label style="width:100px;">Category:</label> {{userP.category}}<br/>
+                      <label style="width:100px;">Role:</label> {{userP.role}}<br/>
+                    </p>
+                  </div>
+                  
+                  <div class="tab-pane" id="about">
+                    <label style="width:120px;">Address:</label> {{userP.address}}<br/>
+                    <label style="width:120px;">College:</label> {{userP.college}}<br/>
+                    <label style="width:120px;">DOB:</label> {{userP.dob}}<br/>
+                    <label style="width:120px;">Email Verified:</label> {{userP.emailVerified}}<br/>
+                    <label style="width:120px;">Edoola ID:</label> {{userP.edoolaid}}<br/>
+                    <label style="width:120px;">Experience:</label> {{userP.experience}}<br/>
+                    <label style="width:120px;">Status:</label> {{userP.status}}<br/>
+                    <label style="width:120px;">User name:</label> {{userP.username}}<br/>
+                    <label style="width:120px;">Verified:</label> {{userP.verified}}<br/>
+                  </div>
+                  
+                  <div class="tab-pane" id="course">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>Course ID</th>
+                                <th>Title</th>
+                                <th>Date of Purchase</th>
+                                <th>Delete</th>
+                              </tr>
+                            </thead>
+                            <tbody ng-repeat="course in courses">
+                              <tr>
+                                <td>{{course.id}}</td>
+                                <td>{{course.courses.id}}</td>
+                                <td>{{course.courses.title}}</td>
+                                <td>{{course.createdAt}}</td>
+                                <td><a class="btn btn-sm btn-default mbYellow" ng-click="deleteCourse(course)"><i class="fa fa-remove"></i></a></td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+
+                  <div class="tab-pane" id="benefit">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>Course ID</th>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Credits</th>
+                                <th>Delete</th>
+                              </tr>
+                            </thead>
+                            <tbody ng-repeat="ben in coursebenefits">
+                              <tr>
+                                <td>{{ben.id}}</td>
+                                <td>{{ben.courseId}}
+                                <td>{{ben.benefits.id}}</td>
+                                <td>{{ben.benefits.title}}</td>
+                                <td>{{ben.creditType}} - {{ben.credits}}</td>
+                                <td><a class="btn btn-sm btn-default mbYellow" ng-click="deleteBenefit(ben)"><i class="fa fa-remove"></i></a></td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+
+                  <div class="tab-pane" id="test">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th>#</th>
+                                <th>Test-Spec ID</th>
+                                <th>Title</th>
+                                <th>Credits</th>
+                                <th>Delete</th>
+                              </tr>
+                            </thead>
+                            <tbody ng-repeat="test in tests">
+                              <tr>
+                                <td>{{test.id}}</td>
+                                <td>{{test.testSpecificationId}}
+                                <td>{{test.testspec.title}}</td>
+                                <td>{{test.credits}}</td>
+                                <td><a class="btn btn-sm btn-default mbYellow" ng-click="deleteTest(test)"><i class="fa fa-remove"></i></a></td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+
+                  <div class="tab-pane" id="attempts">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>Test Spec</th>
+                                <th>Slug</th>
+                                <th>Status</th>
+                              </tr>
+                            </thead>
+                            <tbody ng-repeat="t in testAttempts">
+                              <tr>
+                                <td>{{t.id}}</td>
+                                <td>{{t.testspec.title}}</td>
+                                <td>{{t.slug}}</td>
+                                <td style="color:red">{{t.attemptStatus}}
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="mentorship">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th>ID</th>
+                                <th>Slot Title</th>
+                                <th>Time</th>
+                                <th>Exam ID</th>
+                                <th>Admin Notes</th>
+                                <th>Notes</th>
+                                <th>Feedback</th>
+                              </tr>
+                            </thead>
+                            <tbody ng-repeat="sl in slotSummary">
+                              <tr>
+                                <td>{{sl.slots.id}}</td>
+                                <td>{{sl.slots.title}}</td>
+                                <td>{{sl.slots.time}}</td>
+                                <td>{{sl.examId}}
+                                <td>{{sl.adminNotes}}
+                                <td>{{sl.notes}}
+                                <td>{{sl.feedback}}
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+                  
+                  <div class="tab-pane" id="activity">
+                    <p>Most recent actions:</p>
+                    
+                    <p class="activity">@XX:XXPM - Logged In</p>
+                    
+                    <p class="activity">@XX:XXPM - Bought SBI Package</p>
+                    
+                    <!--p class="activity">@8:15PM - Posted a comment</p>
+                    
+                    <p class="activity">@4:30PM - Added <strong>someusername</strong> as a friend</p>
+                    
+                    <p class="activity">@12:30PM - Submitted a news article</p-->
+                  </div>
+                </div><!-- end of tab content-->
+            </div><!-- @end #content -->
+        </div><!-- @end #w -->
+    </div>
+</div>
+

@@ -1,0 +1,62 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add/Edit Asset
+  <a class="btn btn-default pull-right" ng-click="cancel()">Close</a></h4>
+</div>
+<div class="modal-body">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <br/><br/>
+			<label style="width: 120px;">Asset ID:</label>
+		    <input style="cursor: not-allowed;" size="40" type="text" value="{{assetInfo.id}}" readonly="true">
+		    <br/><br/>
+		    <label style="width: 120px;">Asset Title<span class="mandatory">*</span>:</label>
+			<input size="40" type="text" ng-model="assetInfo.title"></input>
+			<br/><br/>
+			<label style="width: 120px;">Asset Type<span class="mandatory">*</span>:</label>
+			<select style="width: 362px; margin-bottom:20px;" ng-model="assetInfo.assetType"><br/><br/>
+			  <option value="Learning">Learning </option>
+			  <option value="Testimonials">Testimonials</option>
+			  <option value="Previous Year Paper">Previous Year Paper</option>
+			  <option value="Doubt Solving">Doubt Solving</option>
+			</select>
+			<label style="width: 120px;">Content<span class="mandatory">*</span>:</label>
+			<input size="40" type="text" ng-model="assetInfo.content"></input>
+			<br/><br/>
+			<label style="width: 120px;">Content Type<span class="mandatory">*</span>:</label>
+			<select style="width: 362px; margin-bottom:20px;" ng-model="assetInfo.contentType"><br/><br/>
+			  <option value="VIDEO">VIDEO</option>
+			  <option value="DOCUMENTS">DOCUMENTS</option>
+			</select>
+			<label style="width: 120px;">Asset URL<span class="mandatory">*</span>:</label>
+			<input size="40" type="text" ng-model="assetInfo.url"></input>
+			<br/><br/>
+			<label style="width: 120px;">Description<span class="mandatory">*</span>: </label>
+			<input size="40" type="text" ng-model="assetInfo.description"></input>
+			<br/><br/>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <br/><br/>
+            <label style="width: 120px;">Topic:</label>
+            <select style="width: 362px; margin-bottom:20px;" ng-model="assetInfo.topicId"><br/><br/>
+			  <option ng-repeat="x in topic" value="{{x.id}}">{{x.name}}</option>
+			</select>
+            <label style="width: 120px;">Author<span class="mandatory">*</span>: </label>
+            <input size="40" type="text" ng-model="assetInfo.author"></input><br/><br/>
+            <label style="width: 120px;">Thumbnail<span class="mandatory">*</span>: </label>
+            <input size="40" type="text" ng-model="assetInfo.authorThumbnail"></input><br/><br/>
+            <label style="width: 120px;">Author Url<span class="mandatory">*</span>:</label>
+            <input size="40" type="text" ng-model="assetInfo.authorUrl"></input><br/><br/>
+            <label style="width: 120px;">Source<span class="mandatory">*</span>:</label>
+            <input size="40" type="text" ng-model="assetInfo.source"></input><br/><br/>
+            <label style="width: 120px;">Thumbnail Url<span class="mandatory">*</span>: </label>
+            <input size="40" type="text" ng-model="assetInfo.thumbnailUrl"></input><br/><br/>
+            <label style="width: 120px;">Embed Code:</label>
+            <input size="40" type="text" ng-model="assetInfo.embedcode"></input><br/><br/>
+        </div>
+    </div>
+</div>
+<span class="leftmodal marginB"><a class="btn btn-primary marginB" ng-click="ok()">Save</a></span>
+      
+
+ 

@@ -1,0 +1,124 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add/Edit Test Specifications
+  	<a class="btn btn-default pull-right" ng-click="cancel()">Close</a>
+  </h4>
+</div>
+<div class="modal-body">
+	<div class="tabbable"> <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-target="#tab1" data-toggle="tab">Tests</a></li>
+            <li><a data-target="#tab2" data-toggle="tab">Map Cutoffs</a></li>
+        </ul>
+        <div class="tab-content">
+        	<div class="tab-pane active" id="tab1">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+						<br/><br/>
+						<label>Test ID:</label>
+						<input style="cursor: not-allowed;" size="35" type="text" value="{{testInfojson.id}}" readonly="true"></input>
+						<br/><br/>
+						<label>Test Title<span class="mandatory">*</span>:</label>
+						<input size="35" type="text" ng-model="testInfojson.title"></input>
+						<br/><br/>
+						<label>Type<span class="mandatory">*</span>:</label>
+						<select style="width: 335px; margin-bottom:20px;" ng-model="testInfojson.type">
+			                    <option value="Mock Test">Mock Test</option>
+			                    <option value="Subject Test">Subject Test</option>
+			            </select>
+						<br/><br/>
+						<label>Slug<span class="mandatory">*</span>:</label>
+						<input size="35" type="text" ng-model="testInfojson.slug"></input>
+						<br/><br/>
+						<label>Status:</label>
+						<input style="cursor: not-allowed;" size="35" type="text" ng-model="testInfojson.status" readonly="true"></input>
+						<br/><br/>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+						<br/><br/>
+						<label>Test Specification<span class="mandatory">*</span>:</label>
+						<span ng-if="view==0">
+						<input style="cursor: not-allowed;" size="30" type="text" readonly="true" value="{{testSpec.id}} - {{testSpec.title}}"></input>
+						<!--a class="btn btn-default btn-sm" ng-click="editTS()">Change</a-->
+						</span>
+						<span ng-if="view==1">
+						<input size="30" type="text" id="search-tags" ng-change="complete()" ng-model="tsTitle" autocomplete="off"></input>&nbsp;&nbsp;
+						</span>
+						<br/><br/>
+						<label>Test Content:</label>
+						<input size="30" type="text" ng-model="testInfojson.testContent"></input>
+						<br/><br/>
+						<label>Edoola Content ID:</label>
+						<input size="30" type="text" ng-model="testInfojson.edoolaContentId"></input>
+						<br/><br/>
+						<label>S3 ID:</label>
+						<input size="30" type="text" ng-model="testInfojson.s3Id"></input>
+						<br/><br/>
+					</div>
+				</div>
+				<a class="btn btn-primary leftmodal marginB" ng-click="ok()">Save</a>
+			</div><!--end of tab 1-->
+			<div class="tab-pane" id="tab2">
+				<br/>
+				<a ng-if="show==0" class="btn btn-primary btn-sm marginB" ng-click="addC()">Add New</a>
+				<a ng-if="show==1" class="btn btn-primary btn-sm marginB" ng-click="viewList()">View List</a>
+					<span ng-if="show==1">
+						<div class="container-fluid">
+						  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<span style="color:red;">Note: Use "Total" as section name for overall cutoff.</span><br/>
+							<label class="customWidth">Add New Cutoffs -</label><br/>
+						    <label>Section<span class="mandatory">*</span>:</label>
+						    <input size="30" type="text" ng-model="testSection.section"></input>
+							<label>Cutoff<span class="mandatory">*</span>:</label><br/>
+							<span ng-repeat="cut in cutoffVal">
+								<label>{{cut.id}}<span class="mandatory">*</span></label>
+								<input size="10" type="text" ng-model="cut.val"></input><br/>
+							</span>
+							<a class="btn btn-primary btn-sm" ng-click="addCutoff()">Save</a>
+							</div>
+							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+								<label class="customWidth">Copy From Existing -</label><br/>
+								<label style="width:50px;">Slug<span class="mandatory">*</span>:</label>
+								<input size="30" type="text" ng-model="testSlugId.slug"></input>
+								<a class="btn btn-primary btn-sm" ng-click="addCutoffExist()">Save</a>
+							</div>
+						</div>
+					 </div>
+				  </span>
+				<h4 ng-if="cutoffMapped.length == 0 && show==0">&nbsp;No cutoffs mapped.</h4>
+				<span ng-if="show==0">
+				<div class="table-responsive" style="height: 350px; overflow-y:scroll;" ng-if="cutoffMapped.length > 0">
+					  <table class="table table-bordered">
+					    <thead>
+					      <tr>
+					      	<th>ID</th>
+					        <th>Section</th>
+					        <th>Category</th>
+					        <th>Cutoff</th>
+					        <!--th>Edit</th-->
+					        <th>Delete</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr ng-repeat="cm in cutoffMapped track by $index">
+					        <td>{{cm.id}}</td>
+					        <td>{{cm.section}}</td>
+					        <td>{{cm.category}}</td>
+		                    <!--td ng-if="editValue==1"><input type="text" ng-model="cm.category" style="width: 100%"></input></td-->
+		                    <td>{{cm.cutoff}}</td>
+		                    <!--td ng-if="editValue==1"><input type="text" ng-model="cm.cutoff" style="width: 100%"></input></td>
+		                    <td><a class="tooltips" ng-click="editBenefit()"><span>Edit</span><i class="fa fa-pencil-square-o"></i></a></td>
+		                    <td ng-if="editValue==1"><a class="tooltips" ng-click="saveBenefit(benefit)"><span>Save</span><i class="fa fa-floppy-o"></i></a></td-->
+		                    <td>
+                            <a class="tooltips" ng-click="delCutoff(cm)"><span>Remove this mapping</span><i class="fa fa-remove"></i></a>
+                        	</td>
+					      </tr>
+					    </tbody>
+					  </table>
+					</div>
+					</span>
+					<br/>
+				</div><!--end of tab 2-->
+        </div><!--tab content-->
+	</div><!--tabbable-->
+</div><!--modal body-->

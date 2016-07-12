@@ -1,0 +1,49 @@
+<div class="container-fluid page">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h1 class="page-header">Exams <a class="btn btn-default mbYellow" ng-click="open(0)"><i class="fa fa-plus"></i></a></h1>
+        <br/>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 marginB">
+          <div class="panel panel-default">
+            <div class="panel-heading panelMB">
+                    Exams List
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                    <table class="table table-hover" id="myTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Exam Name</th>
+                                <th>Edit</th>
+                                <!--th>Delete</th-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="exam in results">
+                                <td>{{exam.id}}</td>
+                                <td>{{exam.title}}</td>
+                                <td>
+                                    <a class="btn btn-primary mbBtn btn-sm tooltips" data-toggle="modal" ng-click="open(exam)"><span>Edit Exam Details</span>
+                                    <i class="fa fa-pencil-square-o"></i>
+                                    </a>
+                                </td>
+                                <!--td>
+                                    <a class="btn btn-danger btn-sm tooltips" data-toggle="modal" ng-click="delete(exam)"><span>Delete Exam</span>
+                                    <i class="fa fa-remove"></i>
+                                    </a>
+                                </td-->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- /.table-responsive -->
+            </div><!-- /.panel-body -->
+        </div><!--Panel End-->
+    </div>
+</div>
+<!--script>
+   
+    $('#myTable').DataTable( {
+      responsive: true
+    });
+</script-->

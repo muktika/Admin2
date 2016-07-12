@@ -1,0 +1,9 @@
+Run pm2 in admin --
+1. Ensure that grunt-cli is installed
+2. pm2 start npm --no-automation --name="admin" -- run start
+
+Project run --
+1. npm install
+2. npm start
+ 
+Port :9000

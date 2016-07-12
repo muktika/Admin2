@@ -1,0 +1,37 @@
+<div class="container-fluid page">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h1 class="page-header">User Purchases</h1>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 marginB">
+            <label style="width: 80px;">User ID<span class="mandatory">*</span>:</label>
+            <input size="40" type="text" ng-model="userId">&nbsp;
+            <a class="btn btn-primary mbBtn" ng-click="find()">Find</a><br/><br/>
+            <div ng-if="results.length>0">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Course ID</th>
+                                <th>Exam ID</th>
+                                <th>Amount</th>
+                                <th>transaction Number </th>
+                                <th>Payment ID</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="r in results track by $index">
+                                <td>{{r.id}}</td>
+                                <td>{{r.courseId}}</td> 
+                                <td>{{r.examId}}</td>
+                                <td>{{r.amount}}</td>
+                                <td>{{r.txnNumber}}</td>
+                                <td>{{r.paymentId}}</td>
+                                <td>{{r.stastus}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+</div>

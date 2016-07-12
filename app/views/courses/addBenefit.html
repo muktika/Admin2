@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add Benefit <span class="pull-right"><a class="btn btn-primary" ng-click="cancel()">Cancel</a></h4>
+</div>
+<div class="modal-body">
+	<label>Benefit ID:</label>
+    <input style="cursor: not-allowed;" size="40" type="text" value="{{courseBenefitInfo.Id}}" readonly="true">
+    <br/><br/>
+    <label>Credit Type:</label>
+    <input style="cursor: not-allowed;" size="40" type="text" value="{{courseBenefitInfo.creditType}}" readonly="true">
+    <br/><br/>
+    <label>Credits:</label>
+	<input size="40" type="text" ng-model="courseBenefitInfo.credits"></input>
+	<br/><br/>
+	<label>Price:</label>
+	<input size="40" type="text" ng-model="courseBenefitInfo.price"></input>
+	<br/><br/>
+</div>
+<span class="leftmodal"><a class="btn btn-primary marginB" ng-click="save()">Save</a></span>
+      
+
+ 

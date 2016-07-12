@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add/Edit Test Specifications
+  <a class="btn btn-default pull-right" ng-click="cancel()">Close</a></h4>
+</div>
+<div class="modal-body">
+	<br/><br/>
+	<label>Test Spec ID:</label>
+	<input style="cursor: not-allowed;" size="40" type="text" value="{{testSpecInfojson.id}}" readonly="true">
+	<br/><br/>
+	<label>Test Spec Title<span class="mandatory">*</span>:</label>
+	<input size="40" type="text" ng-model="testSpecInfojson.title"></input>
+	<br/><br/>
+	<label>Display Name:</label>
+	<input size="40" type="text" ng-model="testSpecInfojson.displayName"></input>
+	<br/><br/>
+	<label>Type<span class="mandatory">*</span>:</label>
+	<input size="40" type="text" ng-model="testSpecInfojson.type"></input>
+	<br/><br/>
+	<label>Syllabus:</label>
+	<input size="40" type="text" ng-model="testSpecInfojson.syllabus"></input>
+	<br/><br/>
+</div>
+<a class="btn btn-primary leftmodal marginB" ng-click="ok()">Save</a>

@@ -1,0 +1,48 @@
+<div class="container-fluid page">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h1 class="page-header">Tests <a class="btn btn-default mbYellow" data-toggle="modal" ng-click="open(0)"><i class="fa fa-plus"></i></a></h1>
+        <br/>
+        <div class="marginB col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <a class="btn btn-default mbYellow col-xs-12 col-sm-12 col-md-3 col-md-offset-2 col-lg-3 col-lg-offset-2" ng-click="mock()">Mock Tests</a>
+            <a class="btn btn-default mbYellow col-xs-12 col-sm-12 col-md-3 col-md-offset-4 col-md-pull-2 col-lg-3 col-lg-offset-4 col-lg-pull-2" ng-click="subject()">Subject Tests</a>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 marginB"  ng-if="show">
+          <div class="panel panel-default">
+            <div class="panel-heading panelMB">
+                    Tests List
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Test Title</th>
+                                <th>Edit</th>
+                                <!--th>Delete</th-->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="test in results track by $index">
+                                <td>{{test.id}}</td>
+                                <td>{{test.title}}</td> 
+                                <td >
+                                    <a class="btn btn-primary mbBtn btn-sm tooltips" data-toggle="modal" ng-click="open(test)"><span> Edit Test Details </span>
+                                    <i class="fa fa-pencil-square-o"></i>
+                                    </a>
+                                </td>
+                                <!--td>
+                                    <a class="btn btn-danger btn-sm tooltips" data-toggle="modal" ng-click="delete(testSpec)"><span>Delete Test Specification</span>
+                                    <i class="fa fa-remove"></i>
+                                    </a>
+                                </td-->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- /.table-responsive -->
+            </div><!-- /.panel-body -->
+        </div><!--Panel End-->
+       </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="modal-header">
+    <div class="modal-title" id="myModalLabel"><span style="font-size: 22px;">Edit Mentorship Details</span>
+    <a class="btn btn-default pull-right" ng-click="cancel()">Close</a></div>
+</div>
+
+ <div class="modal-body">
+ 	<br/><br/>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th ng-if="e==0">User Email</th>
+                    <th ng-if="e==0">User Contact</th>
+                    <th>Exam ID</th>
+                    <th>Admin Notes</th>
+                    <th>Notes</th>
+                    <th>Feedback</th>
+                    <th>Status</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="book in booked track by $index">
+                    <td>{{book.user.name}}</td>
+                    <td ng-if="e==0">{{book.user.email}}</td>
+                    <td ng-if="e==0">{{book.user.mobile}}</td>
+                    <td ng-if="editVal[$index].val==0">{{book.examId}}</td>
+                    <td ng-if="editVal[$index].val==1">
+                        <input size="40" type="text" id="search-tags{{$index}}" ng-change="complete($index)" ng-model="examTitle" autocomplete="off"></input>
+                        {{showTitle}}
+                    </td>
+                    <td ng-if="editVal[$index].val==0">{{book.adminNotes}}</td>
+                    <td ng-if="editVal[$index].val==1">
+                       <input type="text" ng-model="book.adminNotes" style="width: 100%"></input>
+                    </td>
+                    <td ng-if="editVal[$index].val==0">{{book.notes}}</td>
+                    <td ng-if="editVal[$index].val==1">
+                       <input type="text" ng-model="notes[$index].mynotes" style="width: 100%"></input>
+                        {{book.notes}}
+                    </td>
+                    <td>{{book.feedback}}</td>
+                    <td ng-if="editVal[$index].val==0">{{book.status}}</td>
+                    <td ng-if="editVal[$index].val==1">
+                       <select ng-model="book.status" style="width: 100%">
+                       	 <option value="Booked">Booked</option>
+                       	 <option value="Completed">Completed</option>
+                       	 <option value="ReSchedule">ReSchedule</option>
+                       	 <option value="NotReachable">NotReachable</option>
+                       	 <option value="CouldNotCall">CouldNotCall</option>
+                       </select>
+                       <!--input type="text" ng-model="book.status" style="width: 100%"></input-->
+                    </td>
+                    <td ng-if="editVal[$index].val==0"><a class="tooltips" ng-click="edit(book.examId, $index)"><span>Edit</span><i class="fa fa-pencil-square-o"></i></a></td>
+                    <td ng-if="editVal[$index].val==1"><a class="tooltips" ng-click="save(book , notes[$index].mynotes, $index)"><span>Save</span><i class="fa fa-floppy-o"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div><!-- /.table-responsive -->
+    
+    <span class="leftmodal"><a class="btn btn-primary marginB" ng-click="create()">Save</a></span>
+</div>

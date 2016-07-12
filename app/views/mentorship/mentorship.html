@@ -1,0 +1,52 @@
+<div class="container-fluid page">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h1 class="page-header">Mentorship</h1>
+        <div class="marginB col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <a class="btn btn-default mbYellow col-xs-12 col-sm-12 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1" ng-click="all()">All Slots</a>
+            <a class="btn btn-default mbYellow col-xs-12 col-sm-12 col-md-2 col-md-offset-2 col-lg-2 col-lg-offset-2" ng-click="completed()">Completed</a>
+            <a class="btn btn-default mbYellow col-xs-12 col-sm-12 col-md-2 col-md-offset-3 col-lg-2 col-lg-offset-3 col-md-pull-1 col-lg-pull-1" ng-click="booked()">Booked</a>
+        </div>
+        <div class="marginB col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <a class="btn btn-default mbYellow col-xs-12 col-sm-12 col-md-2 col-md-offset-1 col-lg-2 col-lg-offset-1" ng-click="notreachable()">Not Reachable</a>
+            <a class="btn btn-default mbYellow col-xs-12 col-sm-12 col-md-2 col-md-offset-2 col-lg-2 col-lg-offset-2" ng-click="couldnotcall()">Could Not Call</a>
+            <a class="btn btn-default mbYellow col-xs-12 col-sm-12 col-md-2 col-md-offset-3 col-lg-2 col-lg-offset-3 col-md-pull-1 col-lg-pull-1" ng-click="reschedule()">Re-Scheduled</a>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 marginB" ng-if="showRes==1">
+            <div class="panel panel-default">
+               <div class="panel-heading panelMB">
+                        Mentorship List
+                </div>
+                <!-- /.panel-heading -->
+               <div class="panel-body">
+                <div class="table-responsive" ng-controller="MentorshipController">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Call Count</th>
+                                <th>Status</th>
+                                <th>Date & Time</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="mentor in results track by $index">
+                                <td>{{mentor.id}}</td>
+                                <td>{{mentor.bookedslots.length}}</td>
+                                <td>{{mentor.status}}</td>
+                                <td>{{dateTime[$index]}}</td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm tooltips mbBtn" data-toggle="modal" ng-click="open(mentor)"><span>Edit Mentorship Details</span>
+                                    <i class="fa fa-pencil-square-o"></i>
+                                    </a>
+                                </td>
+                 
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- /.table-responsive -->
+            </div><!-- /.panel-body -->
+        </div><!--Panel End-->
+      </div>
+  </div>
+</div>

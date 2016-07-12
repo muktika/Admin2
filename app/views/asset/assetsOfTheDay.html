@@ -1,0 +1,34 @@
+<div class="container-fluid page">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h1 class="page-header">Asset Of The Day</h1>
+        <br/>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 marginB">
+          <div class="panel panel-default"  ng-controller="AssetOTDController">
+            <div class="panel-heading">
+                    Asset Of The Day
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body" ng-repeat="a in info">
+                <br/><br/>
+                <label style="width: 120px;">Asset ID:</label>
+                <input style="cursor: not-allowed;" size="40" type="text" value="{{a.id}}" readonly="true"/>
+                <br/><br/>
+                <label style="width: 120px;">Asset Title:</label>
+                <input size="40" type="text" value="{{asset.title}}" readonly="true"></input>
+                <br/><br/>
+                <label style="width: 120px;">Asset Type:</label>
+                <input size="40" type="text" value="{{asset.contentType}}" readonly="true"></input>
+                <br/><br/>
+                <label style="width: 120px;">Category:</label>
+                <input size="40" type="text" value="{{asset.assetType}}" readonly="true"></input>
+                <br/><br/>
+                <label style="width: 120px;">From Date:</label>
+                <input size="40" type="text" value="{{a.activeFromDate}}" readonly="true"></input>
+                <br/><br/>
+                <label style="width: 120px;">To Date:</label>
+                <input size="40" type="text" value="{{a.activeTillDate}}" readonly="true"></input>
+                <br/><br/>
+            </div><!-- /.panel-body -->
+        </div><!--Panel End-->
+ </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container-fluid page">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h1 class="page-header">Asset Of The Day</h1>
+        <br/>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 marginB">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+                    Asset Of The Day
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body" ng-repeat="a in info">
+                <br/><br/>
+                &nbsp;&nbsp;<label style="width: 120px;">Asset ID:</label>
+                <input style="cursor: not-allowed;" size="40" type="text" value="{{a.id}}" readonly="true"/>
+                <br/><br/>
+                &nbsp;&nbsp;<label style="width: 120px;">Asset Title:</label>
+                <input style="cursor: not-allowed;" ng-if="edit==0" size="40" type="text" value="{{asset.title}}" readonly="true"/>
+                <span ng-if="edit==1">
+                    <input size="40" type="text" id="search-tag" ng-change="complete()" ng-model="assetTitle" autocomplete="off"/>
+                </span>
+                <br/><br/><span ng-if="edit==0" style="cursor: not-allowed;">
+                &nbsp;&nbsp;<label style="width: 120px;">Asset Type:</label>
+                <input size="40" type="text" value="{{asset.contentType}}" readonly="true"/>
+                <br/><br/>
+                &nbsp;&nbsp;<label style="width: 120px;">Category:</label>
+                <input size="40" type="text" value="{{asset.assetType}}" readonly="true"/>
+                <br/><br/></span>
+                &nbsp;&nbsp;<label style="width: 120px;">From Date:</label>
+                <input style="cursor: not-allowed;" ng-if="edit==0" size="40" type="text" value="{{a.activeFromDate}}" readonly="true"/>
+                <input ng-if="edit==1" type="date" size="40" ng-model="parent.from"></input>
+                <br/><br/>
+                &nbsp;&nbsp;<label style="width: 120px;">To Date:</label>
+                <input style="cursor: not-allowed;" ng-if="edit==0" size="40" type="text" value="{{a.activeTillDate}}" readonly="true"/>
+                <input ng-if="edit==1" type="date" size="40" ng-model="parent.to"></input>
+                <br/><br/>
+                <a ng-if="edit==0" class="btn btn-primary pull-right mbBtn marginB" ng-click="change()">Change</a>&nbsp;&nbsp;
+                <a ng-if="edit==1" class="btn btn-primary pull-right mbBtn marginB" ng-click="cancel()">Cancel</a>
+                <a ng-if="edit==1" class="btn btn-primary pull-right mbBtn marginB" ng-click="save()">Save</a>&nbsp;&nbsp;
+            </div><!-- /.panel-body -->
+        </div><!--Panel End-->
+    </div>
+</div>
+

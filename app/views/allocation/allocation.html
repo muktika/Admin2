@@ -1,0 +1,19 @@
+<div class="container-fluid page">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h1 class="page-header">Package Allocation </h1>
+        <br/>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 marginB">
+            <br/><br/>
+            <label class="customWidth">User ID<span class="mandatory">*</span>:</label>
+            <input size="40" type="text" ng-model="userId"><br/><br/>
+            <label class="customWidth">Exam<span class="mandatory">*</span>: </label>
+            <input size="40" type="text" id="search-tags" ng-change="completeE()" ng-model="examTitle" autocomplete="off"/><br/><br/>
+            <label class="customWidth">Course<span class="mandatory">*</span>: </label>
+            <!--input size="40" type="text" id="search-tag" ng-change="complete()" ng-model="courseTitle" autocomplete="off"/><br/><br/-->
+            <select ng-model="courseId" style="width:380px;">
+                <option ng-repeat="course in courseList" value="{{course.courses.id}}">{{course.courses.title}}</option>
+            </select><br/><br/>
+            <center><a class="btn btn-primary mbBtn marginB" ng-click="Pay()" style="margin-right: 150px;">Allocate</a></center>
+        </div>
+    </div>
+</div>

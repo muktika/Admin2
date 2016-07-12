@@ -1,0 +1,197 @@
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse" style="min-height: 580px;">
+        <ul class="nav in" id="side-menu">
+            <sidebar-search></sidebar-search>
+            <li ui-sref-active="active">
+                <a class="mb-yellow" ui-sref="dashboard.home">Dashboard</a>
+            </li>
+            <li ng-class="{active: collapseVar==1}">{{dropDown}}
+                <a class="mb-yellow" ui-sref="dashboard.exams" ng-click="check(1)">Exam Management<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=1">
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.exams">Exams</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.courses">Courses</a>
+                    </li>
+                </ul>
+            </li>
+            <li ng-class="{active: collapseVar==2}">{{dropDown}}
+                <a class="mb-yellow" ui-sref="dashboard.assets" ng-click="check(2)">Asset Management
+                <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=2">
+                <!-- Asset list, adding, upload, drag drop, asset of the day . Dropdown- aseets,asset of the day, promotions-->
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.assets">Assets</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.assetOTD">Asset Of The Day</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.notifications">Promotions</a>
+                    </li>
+                </ul>
+            </li>
+            <li ng-class="{active: collapseVar==3}">{{dropDown}}
+                <a class="mb-yellow" href="" ng-click="check(3)">User Management<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=3">
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.users">Users</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.purchases">Purchases</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.notifications">Analytics</a>
+                    </li>
+                </ul>
+            </li>
+           
+            <li ng-class="{active: collapseVar==4}">{{dropDown}}
+                <a class="mb-yellow" href="" ng-click="check(4)">Test Management<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=4">
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.tests">Tests</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.testSpecs">Test Specification</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard">Descriptive Papers</a>
+                    </li>
+                    <!--li ui-sref-active="active">
+                        <a ui-sref="dashboard.notifications">Generate Tests</a>
+                    </limake it a func inside test-->
+                </ul>
+            </li>
+            <li ng-class="{active: collapseVar==5}">{{dropDown}}
+                <a class="mb-yellow" href="" ng-click="check(5)">Notifications<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=5">
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.notifications">Send Notifications</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.history">View History</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.abc">Registered Users</a>
+                    </li>
+                </ul>
+            </li>
+             <li ui-sref-active="active">
+                <a class="mb-yellow" ui-sref="dashboard.mentorship">Mentorship<span></span></a>
+                <!-- submenu - Scheduling,calls-->
+            </li>
+            <li ui-sref-active="active">
+                <a class="mb-yellow" ui-sref="dashboard.allocation">Package Allocation<span></span></a>
+                <!-- submenu - Scheduling,calls-->
+            </li>
+            <li ui-sref-active="active">
+                <a class="mb-yellow" ui-sref="dashboard.table">Events</a>
+                <!-- Post an event, history -->
+            </li>
+            <li ui-sref-active="active">
+                <a class="mb-yellow" ui-sref="dashboard.form">Doubt Solving</a>
+            </li>
+            <!--li ng-class="{active: collapseVar==5}">{{dropDown}}
+                <a class="mb-yellow" ui-sref="dashboard.master" ng-click="check(5)">Master<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=5">
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.form">Benefits</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.addExamPatter">Categories</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.addExam">Asset Type</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.grid">Content Type</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.grid">Exam Type</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.grid">Test Type</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.grid">User Role</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.grid">Attempt Status</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.grid">Device Type</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a class="mb-yellow" ui-sref="dashboard.notification">Notification Type</a>
+                    </li>
+                </ul>
+            </li-->
+            <li ui-sref-active="active">
+                <a class="mb-yellow" ui-sref="dashboard.paper">Paper Creation<span></span></a>
+            </li>
+            
+            
+            
+            
+            
+                
+            <!--li ng-class="{active: collapseVar==2}">
+                <a href="" ng-click="check(2)"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=2">
+                    <li>
+                        <a href="">Second Level Item</a>
+                    </li>
+                    <li>
+                        <a href="">Second Level Item</a>
+                    </li>
+                    <li ng-init="third=!third" ng-class="{active: multiCollapseVar==3}">
+                        <a href="" ng-click="multiCheck(3)">Third Level <span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level" collapse="multiCollapseVar!=3">
+                            <li>
+                                <a href="">Third Level Item</a>
+                            </li>
+                            <li>
+                                <a href="">Third Level Item</a>
+                            </li>
+                            <li>
+                                <a href="">Third Level Item</a>
+                            </li>
+                            <li>
+                                <a href="">Third Level Item</a>
+                            </li>
+
+                        </ul>
+                        < /.nav-third-level >
+                    </li>
+                </ul>
+                <!/.nav-second-level >
+            </li>
+            <li ng-class="{active:collapseVar==4}">
+                <a href="" ng-click="check(4)"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=4">
+                    <li ng-class="{active: selectedMenu=='blank'}">
+                        <a ui-sref="dashboard.blank" ng-click="selectedMenu='blank'">Blank Page</a>
+                    </li>
+                    <li>
+                        <a ui-sref="login">Login Page</a>
+                    </li>
+                </ul>
+                <!/.nav-second-level >
+            </li>
+            <li><a href="http://www.strapui.com/">Premium Angular Themes</a></li>
+        </ul>
+    </div>
+    <! /.sidebar-collapse >
+</div--> 
+
+
+
